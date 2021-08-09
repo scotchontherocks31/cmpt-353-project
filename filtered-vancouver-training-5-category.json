@@ -462,8 +462,6 @@
 {"lon":-123.1678232,"lat":49.2639335,"amenity":"fast_food","name":"Uncle Faith's Pizza","city":"Vancouver","postcode":null,"street":"West Broadway"}
 {"lon":-123.1191954,"lat":49.2807931,"amenity":"fast_food","name":"Red Burrito","city":"Vancouver","postcode":"V6B 2B9","street":"Robson Street"}
 {"lon":-123.109344,"lat":49.282623,"amenity":"fast_food","name":"Meat & Bread","city":"Vancouver","postcode":null,"street":"Cambie Street"}
-{"lon":-122.2908016,"lat":49.0365027,"amenity":"fast_food","name":"Mary Brown's Famous Chicken & Taters!","city":"Abbotsford","postcode":"V2S 0H9","street":"McCallum Road"}
-{"lon":-122.2907179,"lat":49.0365043,"amenity":"fast_food","name":"freshii","city":"Abbotsford","postcode":"V2S 0H9","street":"McCallum Road"}
 {"lon":-123.1238125,"lat":49.1551644,"amenity":"fast_food","name":"Subway","city":"Richmond","postcode":null,"street":"Blundell Road"}
 {"lon":-123.1247497,"lat":49.1544601,"amenity":"fast_food","name":"Little Caesars","city":"Richmond","postcode":null,"street":"Blundell Road"}
 {"lon":-123.1383784,"lat":49.289715,"amenity":"fast_food","name":"Peaked Pies","city":"Vancouver","postcode":"V6G 2M3","street":"Denman Street"}
@@ -623,7 +621,6 @@
 {"lon":-122.7994621,"lat":49.280165,"amenity":"fast_food","name":"KFC-Taco Bell","city":"Coquitlam","postcode":"V3B 5R5","street":"Barnet Hwy"}
 {"lon":-123.0118153,"lat":49.2643595,"amenity":"fast_food","name":"Quiznos","city":"Burnaby","postcode":"V5C 0A4","street":"Dawson Street"}
 {"lon":-122.7935245,"lat":49.0463085,"amenity":"fast_food","name":"The Carvery Sandwich Shop","city":"Surrey","postcode":"V4P 1H5","street":"King George Boulevard"}
-{"lon":-122.3714839,"lat":49.0548927,"amenity":"fast_food","name":"Carl's Jr.","city":"Abbotsford","postcode":"V2T 0E2","street":"Fraser Highway"}
 {"lon":-123.0116605,"lat":49.2643682,"amenity":"fast_food","name":"Papa John's","city":"Burnaby","postcode":"V5C 0A4","street":"Dawson Street"}
 {"lon":-123.1028104,"lat":49.2106799,"amenity":"fast_food","name":"Triple-O's","city":"Vancouver","postcode":"V5X 2S3","street":"Southeast Marine Drive"}
 {"lon":-123.1281326,"lat":49.2887314,"amenity":"fast_food","name":"Subway","city":"Vancouver","postcode":null,"street":"West Georgia Street"}
@@ -663,7 +660,6 @@
 {"lon":-122.8278038,"lat":49.2132529,"amenity":"place_of_worship","name":"Vancouver Life Church","city":"Vancouver","postcode":"V6A 1M9","street":"East Hastings Street"}
 {"lon":-123.11653,"lat":49.2799366,"amenity":"place_of_worship","name":"Westside Church","city":"Vancouver","postcode":"V6B 3M7","street":"Seymour Street"}
 {"lon":-122.6420625,"lat":49.0752034,"amenity":"place_of_worship","name":null,"city":"Vancouver","postcode":null,"street":"Bursill Street"}
-{"lon":-123.1247982,"lat":49.277043,"amenity":"place_of_worship","name":"Trinity Central","city":"Abbotsford","postcode":null,"street":"Gladwin Road"}
 {"lon":-123.0679521,"lat":49.0350298,"amenity":"place_of_worship","name":null,"city":"Surrey","postcode":null,"street":"184 Street"}
 {"lon":-122.9916818,"lat":49.2716069,"amenity":"place_of_worship","name":"Brentwood Park Alliance Church","city":"Surrey","postcode":"V2Z 2T6","street":"48 Avenue"}
 {"lon":-122.9705761,"lat":49.2749222,"amenity":"place_of_worship","name":"Korean Baptist Church of Vancouver","city":"Surrey","postcode":null,"street":"20 Avenue"}
@@ -1152,7 +1148,6 @@
 {"lon":-123.1678222,"lat":49.2579533,"amenity":"restaurant","name":"Zest Japanese Cuisine","city":"Vancouver","postcode":null,"street":"Dunbar Street"}
 {"lon":-123.1853877,"lat":49.2487723,"amenity":"restaurant","name":"Stong's Replenish Cafe","city":"Vancouver","postcode":null,"street":"Dunbar Street"}
 {"lon":-123.1854457,"lat":49.2454947,"amenity":"restaurant","name":"The Cheshire Cheese Inn","city":"Vancouver","postcode":null,"street":"Granville Street"}
-{"lon":-123.1848644,"lat":49.2466537,"amenity":"restaurant","name":"Riya's Pizza","city":"Abbotsford","postcode":"V2T 6K7","street":"Peardonville Road"}
 {"lon":-122.9684877,"lat":49.218898,"amenity":"restaurant","name":"Vassillis Souvlaki Greek Taverna","city":"Vancouver","postcode":null,"street":"Kingsway"}
 {"lon":-123.1386694,"lat":49.266479,"amenity":"restaurant","name":"Cheesecake etc.","city":"Vancouver","postcode":null,"street":"Robson Street"}
 {"lon":-122.3622896,"lat":49.0456065,"amenity":"restaurant","name":"Tony's Place Restaurant","city":"Vancouver","postcode":null,"street":"Bute Street"}
@@ -1581,7 +1576,6 @@
 {"lon":-122.6911917,"lat":49.1193413,"amenity":"restaurant","name":"Hugo's Mexican Kitchen","city":"Surrey","postcode":null,"street":"Fraser Highway"}
 {"lon":-122.65772,"lat":49.2209437,"amenity":"restaurant","name":"Sushi Misoya","city":"Richmond","postcode":"V7E 1T6","street":"Number 1 Road"}
 {"lon":-122.6580814,"lat":49.2209922,"amenity":"restaurant","name":"Pho Phuong Hong Vietnamese Restaurant","city":"Vancouver","postcode":"V6B 1E1","street":"West Cordova Street"}
-{"lon":-122.6577511,"lat":49.2201784,"amenity":"restaurant","name":"Big Star Sandwich Co.","city":"Abbotsford","postcode":"V4X 2M9","street":"Mount Lehman Road"}
 {"lon":-122.2596822,"lat":49.0487975,"amenity":"restaurant","name":"Ocean Park Pizza & Steak house","city":"Surrey","postcode":null,"street":"Delta Street"}
 {"lon":-123.1812812,"lat":49.1245965,"amenity":"restaurant","name":"Saigon By Night","city":"Vancouver","postcode":"V5T 3K6","street":"Kingsway"}
 {"lon":-123.1211163,"lat":49.2750379,"amenity":"restaurant","name":"Milssam Tacorea","city":"Vancouver","postcode":"V5L 1V1","street":"East Hastings Street"}
@@ -1808,7 +1802,6 @@
 {"lon":-122.3205161,"lat":49.1336256,"amenity":"restaurant","name":"Hana Sushi","city":"Vancouver","postcode":"V6Z 2S2","street":"Davie Street"}
 {"lon":-123.1269369,"lat":49.2892662,"amenity":"restaurant","name":"Kiku Sushi Restaurant","city":"Burnaby","postcode":null,"street":"Kingsway"}
 {"lon":-123.1382741,"lat":49.2609013,"amenity":"restaurant","name":"Fiore","city":"Burnaby","postcode":null,"street":"Kingsway"}
-{"lon":-123.005591,"lat":49.2315009,"amenity":"restaurant","name":"Pearl Castle Cafe","city":"Abbotsford","postcode":"V3G 1E1","street":"Whatcom Road"}
 {"lon":-123.0056479,"lat":49.2314546,"amenity":"restaurant","name":"TerraCotta Boyz","city":"Vancouver","postcode":"V6H 3S2","street":"Johnston Street"}
 {"lon":-122.2217322,"lat":49.0444502,"amenity":"restaurant","name":"Chopped Leaf","city":"Vancouver","postcode":null,"street":"Victory Ship Way"}
 {"lon":-123.1348563,"lat":49.2716489,"amenity":"restaurant","name":"Edible Canada","city":"Coquitlam","postcode":"V3K 3N9","street":"Austin Avenue"}
@@ -1887,7 +1880,6 @@
 {"lon":-122.9273351,"lat":49.2192936,"amenity":"restaurant","name":"Pizza Factory","city":"Surrey","postcode":null,"street":"King George Boulevard"}
 {"lon":-122.6795547,"lat":49.1170758,"amenity":"restaurant","name":"C&U Vietnamese Restaurant","city":"Surrey","postcode":null,"street":"104 Avenue"}
 {"lon":-122.6718561,"lat":49.1171597,"amenity":"restaurant","name":"Sammy J's","city":"Surrey","postcode":"V1M 0A4","street":"88 Avenue"}
-{"lon":-122.7933199,"lat":49.045895,"amenity":"restaurant","name":"Crispy Falafel","city":"Abbotsford","postcode":"V2T 4W1","street":"South Fraser Way"}
 {"lon":-122.8456929,"lat":49.1974709,"amenity":"restaurant","name":"Spicy Bowl","city":"Vancouver","postcode":null,"street":"Nelson Street"}
 {"lon":-122.8456456,"lat":49.1925895,"amenity":"restaurant","name":"Round-Up Cafe","city":"Vancouver","postcode":null,"street":"East Broadway"}
 {"lon":-122.8086585,"lat":49.1913473,"amenity":"restaurant","name":"Mek's Delight","city":"Vancouver","postcode":null,"street":"East Broadway"}
@@ -1969,12 +1961,10 @@
 {"lon":-122.9994254,"lat":49.2272203,"amenity":"community_centre","name":"CHQ","city":"Surrey","postcode":null,"street":"88 Avenue"}
 {"lon":-122.8475271,"lat":49.1853915,"amenity":"community_centre","name":"Central City","city":"Vancouver","postcode":null,"street":"Joyce Street"}
 {"lon":-122.8042948,"lat":49.1898841,"amenity":"community_centre","name":"Interactive Play Park","city":"Vancouver","postcode":null,"street":"Cassiar Street"}
-{"lon":-122.249969,"lat":49.0344707,"amenity":"community_centre","name":null,"city":"Abbotsford","postcode":null,"street":"Bradner Road"}
 {"lon":-122.4828013,"lat":49.0549676,"amenity":"community_centre","name":"Aldergrove Kinsmen Community Centre","city":"Vancouver","postcode":null,"street":"Helmcken Street"}
 {"lon":-123.0312546,"lat":49.2638667,"amenity":"community_centre","name":"Thunderbird Community Centre","city":"Vancouver","postcode":null,"street":"East Hastings Street"}
 {"lon":-122.4251634,"lat":49.08301,"amenity":"community_centre","name":"Edenvale Community Garden and Education Centre","city":"Vancouver","postcode":null,"street":"Fraser Street"}
 {"lon":-123.1343242,"lat":49.2825798,"amenity":"community_centre","name":"West End - Coal Harbour Community Policing","city":"Burnaby","postcode":"V5H 0C2","street":"Nelson Avenue"}
-{"lon":-123.0806467,"lat":49.3124337,"amenity":"community_centre","name":"John Braithwaite Community Centre","city":"Abbotsford","postcode":"V2S 1W1","street":"Bevan Avenue"}
 {"lon":-122.8068016,"lat":49.1051647,"amenity":"community_centre","name":"Tong Louie Family YMCA","city":"Surrey","postcode":"V3T 0J2","street":"Green Timbers Way"}
 {"lon":-122.8022864,"lat":49.1937013,"amenity":"community_centre","name":"Guilford Recreation Centre","city":"Surrey","postcode":null,"street":"48 Avenue"}
 {"lon":-122.3177519,"lat":49.0522798,"amenity":"community_centre","name":"Youth for Christ","city":"Vancouver","postcode":"V6P 3J9","street":"Cambie Street"}
@@ -2016,7 +2006,6 @@
 {"lon":-123.0952614,"lat":49.2624087,"amenity":"pharmacy","name":null,"city":"Vancouver","postcode":"V6C 1X5","street":"Dunsmuir Street"}
 {"lon":-122.3788657,"lat":49.0607331,"amenity":"pharmacy","name":"Mt Lehman Pharmacy","city":"Surrey","postcode":null,"street":"City Parkway"}
 {"lon":-122.3356473,"lat":49.0501472,"amenity":"pharmacy","name":"Clearbrook Pharmacy","city":"Burnaby","postcode":null,"street":"Central Boulevard"}
-{"lon":-122.3153232,"lat":49.0519117,"amenity":"pharmacy","name":"Prosper Pharmacy","city":"Abbotsford","postcode":null,"street":"Livingstone Avenue"}
 {"lon":-122.999027,"lat":49.2238944,"amenity":"pharmacy","name":"Innwell Pharmacy","city":"Vancouver","postcode":null,"street":"Alma Street"}
 {"lon":-123.1148525,"lat":49.2848663,"amenity":"pharmacy","name":"Rexall Drugstore","city":"Vancouver","postcode":null,"street":"West 4th Avenue"}
 {"lon":-122.2887446,"lat":49.038472,"amenity":"pharmacy","name":"Marshall Pharmacy","city":"Vancouver","postcode":null,"street":"Robson Street"}
@@ -2360,7 +2349,6 @@
 {"lon":-122.8401405,"lat":49.13037,"amenity":"library","name":"Newton Library","city":"Surrey","postcode":"V3A 2W2","street":"40 Avenue"}
 {"lon":-122.8014365,"lat":49.0351454,"amenity":"library","name":"Semiahmoo Library","city":"Richmond","postcode":null,"street":"Minoru Gate"}
 {"lon":-123.100343,"lat":49.2642773,"amenity":"library","name":"Mount Pleasant Branch","city":"Surrey","postcode":"V3W 5J2","street":"122 Street"}
-{"lon":-123.1081716,"lat":49.2440111,"amenity":"library","name":"VPL Terry Salman Branch","city":"Abbotsford","postcode":"V2T 6N4","street":"George Ferguson Way"}
 {"lon":-122.6901208,"lat":49.2220694,"amenity":"library","name":"Pitt Meadows Library","city":"Vancouver","postcode":null,"street":"Granville Street"}
 {"lon":-122.6415706,"lat":49.1633111,"amenity":"library","name":"Walnut Grove Library","city":"Vancouver","postcode":null,"street":"Granville Street"}
 {"lon":-123.1794707,"lat":49.1933933,"amenity":"car_rental","name":"Avis","city":"Vancouver","postcode":null,"street":"Kingsway"}
@@ -2431,7 +2419,6 @@
 {"lon":-122.5792599,"lat":49.1677023,"amenity":"veterinary","name":"Fort Langley Veterinary Clinic","city":"Coquitlam","postcode":"V3J 3R3","street":"Como Lake Avenue"}
 {"lon":-123.0019231,"lat":49.225806,"amenity":"waste_disposal","name":null,"city":"Vancouver","postcode":null,"street":"East 1st Avenue"}
 {"lon":-122.8966121,"lat":49.2506174,"amenity":"waste_disposal","name":null,"city":"Vancouver","postcode":"V6N 4B4","street":"West 41st Avenue"}
-{"lon":-122.9993035,"lat":49.2254642,"amenity":"waste_disposal","name":null,"city":"Abbotsford","postcode":"V2S 6A3","street":"Ventura Avenue"}
 {"lon":-122.9978689,"lat":49.2256358,"amenity":"waste_disposal","name":null,"city":"Vancouver","postcode":null,"street":"Heather Street"}
 {"lon":-122.997582,"lat":49.2256434,"amenity":"waste_disposal","name":null,"city":"Vancouver","postcode":null,"street":"Heather Street"}
 {"lon":-122.9989643,"lat":49.226154,"amenity":"waste_disposal","name":null,"city":"Surrey","postcode":null,"street":"King George Boulevard"}
