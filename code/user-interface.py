@@ -1,27 +1,47 @@
 import pandas as pd
 import numpy as np
-from geopy.geocoders import Nominatim
+import pickle
+import os
+from difflib import get_close_matches
 
-def valid(address):
-    pass
+# Establishing global vars.
+city_list = ['Vancouver', 'Burnaby', 'Richmond', 'Coquitlam', 'Surrey']
+
+dir = os.getcwd()
+model_path = dir + '/model.pkl'
+training_path = dir + '/../filtered-vancouver-training-5-category.json'
+testing_path = dir + '/../filtered-vancouver-testing.json'
 
 def main():
-    locator = Nominatim(user_agent='user-interface.py')
-    address = input("Enter your current address: ")
-
-    # leaving validation for later
-    # while True:
-    #     address = input("Enter your current address: ")
-    #     if valid(address):
-    #         break
-    #     else:
-    #         print('Invalid address given.\n')
     
-    print(f'Given address: {address}')
+    # Input & validity
+    while True:
+        city = input("Enter your current address: ")
+        amenity = input("Enter the amenity you're looking for: ")
 
-    location = locator.geocode(address)
-    print(f'Translated address using GeoPy: {location.address}')
-    print(f'Lat-long co-ordinates from given address: {location.latitude}, {location.longitude}')
+        if city in city_list:
+            break
+        else:
+            print('Invalid "city" input. Must be in "Vancouver", "Burnaby", "Surrey", "Richmond", "Coquitlam" or "Surrey".\n')
+            continue
+
+    # Loading model and JSON files
+    model = pickle.load(open(model_path, "rb"))
+    training = pd.read_json(training_path, lines= True)
+    testing = pd.read_json(testing_path, lines= True)
+    name_check = training['name'].unique()
+
+    # Filtration & Combination
+    filter_testing = testing[["lat", "lon"]].copy()
+    predict = model.predict(filter_testing)
+    testing["city"] = predict
+    testing = testing[testing["city"] == city].reset_index(drop=True)
+    
+    training = training[training["city"] == city].reset_index(drop=True)
+    dataset = training.append(testing)
+    print(dataset.head(10))
+
+    # TODO: Cross-check amenity, implement the two options for the solutions
 
     return
 
