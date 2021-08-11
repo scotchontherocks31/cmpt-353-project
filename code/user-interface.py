@@ -3,33 +3,78 @@ import numpy as np
 import pickle
 import os
 from difflib import get_close_matches
+import matplotlib.pyplot as plt
+import math
+import io
+import requests
+from PIL import Image
+from tqdm import tqdm
 
 # Establishing global vars.
 city_list = ['Vancouver', 'Burnaby', 'Richmond', 'Coquitlam', 'Surrey']
+zoom = 12
 
 dir = os.getcwd()
 model_path = dir + '/model.pkl'
 training_path = dir + '/../filtered-vancouver-training-5-category.json'
 testing_path = dir + '/../filtered-vancouver-testing.json'
 
+# the following functions are adapted from: https://stackoverflow.com/a/28530369
+def degree_to_number(lat, lon, zoom):
+    r_lat = math.radians(lat)
+    n = 2 ** zoom
+    x_tile = int((lon + 180.0) / 360.0 * n)
+    y_tile = int((1.0 - math.log(math.tan(r_lat) +
+                                 (1 / math.cos(r_lat))) / math.pi) / 2.0 * n)
+                                
+    return x_tile, y_tile
+
+def number_to_degree(x_tile, y_tile, zoom):
+    n = 2 ** zoom
+    lon = x_tile / n * 360.0 - 180.0
+    r_lat = math.atan(math.sinh(math.pi * (1 - 2 * y_tile / n)))
+    lat = math.degrees(r_lat)
+    return lat, lon
+
+def map_image(lat, lon, max_lat, max_lon, zoom):
+    osm_url = r"http://a.tile.openstreetmap.org/{0}/{1}/{2}.png"
+    x_min, y_max = degree_to_number(lat, lon, zoom)
+    x_max, y_min = degree_to_number(max_lat, max_lon, zoom)
+
+    cluster = Image.new('RGB', ((x_max-x_min+1)*256-1, (y_max-y_min+1)*256-1))
+    for x_tile in tqdm(range(x_min, x_max+1)):
+        for y_tile in range(y_min, y_max+1):
+            try:
+                img_url = osm_url.format(zoom, x_tile, y_tile)
+                tile = Image.open(requests.get(img_url, stream=True).raw)
+                cluster.paste(tile, box=(
+                    (x_tile - x_min)*256,  (y_tile - y_min)*255))
+            except:
+                print("Image download failure, instantiating tile as None")
+    
+    return cluster
+
 def main():
     
+    print('\t***\tWELCOME TO PLACEHUNTER!\t***\n')
     # Input & validity
     while True:
-        city = input("Enter your current address: ")
-        amenity = input("Enter the amenity you're looking for: ")
+        city = input("Enter the city name you're located in: ")
+        amenity = input("Enter the name of the place you're looking for: ")
+        city_check = get_close_matches(city, city_list, n= 1)
 
-        if city in city_list:
-            break
-        else:
-            print('Invalid "city" input. Must be in "Vancouver", "Burnaby", "Surrey", "Richmond", "Coquitlam" or "Surrey".\n')
+        if not city_check:
+            print('Invalid "city" input. Must be in "Vancouver", "Burnaby", "Richmond", "Coquitlam" or "Surrey".\n')
             continue
+        else:
+            city = city_check[0]
+            break
+            
 
     # Loading model and JSON files
     model = pickle.load(open(model_path, "rb"))
     training = pd.read_json(training_path, lines= True)
     testing = pd.read_json(testing_path, lines= True)
-    name_check = training['name'].unique()
 
     # Filtration & Combination
     filter_testing = testing[["lat", "lon"]].copy()
@@ -39,10 +84,41 @@ def main():
     
     training = training[training["city"] == city].reset_index(drop=True)
     dataset = training.append(testing)
-    print(dataset.head(10))
 
-    # TODO: Cross-check amenity, implement the two options for the solutions
+    # cross checking using get_close_matches(), cause we're all human
+    name_list = dataset['name'].unique()
+    name_list = [x for x in name_list if x is not None] # apparently this list had none-type objects... who knew
+    amenity_check = get_close_matches(amenity, name_list, n=1)
+    if not amenity_check:
+        print('Could not find name of place in the local database, retry')
+        print('\t***\tTHANK YOU!\t***\n')
+        return
+        
+    amenity = amenity_check[0]
+    print(f'Found place with closest approximation to given name: {amenity}.')
+    dataset = dataset[dataset['name'] == amenity]
 
+    # Setting up lat-lon vars to create image from OSM
+    min_lat = dataset['lat'].min()
+    max_lat = dataset['lat'].max()
+    min_lon = dataset['lon'].min()
+    max_lon = dataset['lon'].max()
+    img_cluster = map_image(min_lat, min_lon, max_lat, max_lon, zoom)
+
+    # TODO: tile fix, else the scatter looks shit
+    x_tile = []
+    y_tile = []
+    for index, row in dataset.iterrows():
+        x, y = degree_to_number(row['lat'], row['lon'], zoom)
+        x_tile.append(x)
+        y_tile.append(y)
+    
+    fig = plt.figure()
+    fig.patch.set_facecolor('white')
+    plt.imshow(np.asarray(img_cluster))
+    plt.scatter(x_tile, y_tile, zorder=1, alpha=0.2, c='b', s=10)
+    plt.show()
+    
     return
 
 if __name__ == '__main__':
