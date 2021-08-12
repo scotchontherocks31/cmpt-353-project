@@ -5,13 +5,12 @@ import os
 from difflib import get_close_matches
 import matplotlib.pyplot as plt
 import math
-import io
 import requests
 from PIL import Image
 from tqdm import tqdm
 
 # Establishing global vars.
-city_list = ["Vancouver", "Burnaby", "Surrey", "Coquitlam", "Richmond"] # ignoring "Abbotsford" following model data
+city_list = ["Vancouver", "Burnaby", "Surrey", "Coquitlam", "Richmond"] # ignoring "Abbotsford" cause model data said so
 zoom = 12
 
 dir = os.getcwd()
@@ -19,11 +18,18 @@ model_path = dir + '/model.pkl'
 training_path = dir + '/../filtered-vancouver-training-5-category.json'
 testing_path = dir + '/../filtered-vancouver-testing.json'
 
+
 def city_to_num(index):
+    """
+        Takes in city name to spit out the index number needed to get desired predict_proba() results
+    """
     return {"Vancouver": 1, "Burnaby": 2, "Surrey": 3, "Coquitlam": 4, "Richmond": 5}[index]
 
-# the following functions are adapted from: https://stackoverflow.com/a/28530369
+# the following two functions are adapted from: https://stackoverflow.com/a/28530369
 def degree_to_number(lat, lon, zoom):
+    """
+        Takes in lat-lon co-ordinates and transforms them into OSM x-y co-ordinates
+    """
     r_lat = math.radians(lat)
     n = 2 ** zoom
     x_tile = int((lon + 180.0) / 360.0 * n)
@@ -33,6 +39,10 @@ def degree_to_number(lat, lon, zoom):
     return x_tile, y_tile
 
 def map_image(lat, lon, max_lat, max_lon, zoom, amenity):
+    """
+        Creates an image cluster out of the given lat-lon co-ordinates and a specified "zoom" value
+        to determine the zoom on the images being taken
+    """
     osm_url = r"http://a.tile.openstreetmap.org/{0}/{1}/{2}.png"
     x_min, y_max = degree_to_number(lat, lon, zoom)
     x_max, y_min = degree_to_number(max_lat, max_lon, zoom)
@@ -53,6 +63,7 @@ def map_image(lat, lon, max_lat, max_lon, zoom, amenity):
     return cluster
 
 def main():
+    
     print('\t***\tWELCOME TO PLACEHUNTER!\t***\n')
     # Input & validity
     while True:
@@ -105,7 +116,7 @@ def main():
     max_lon = dataset['lon'].max()
     img_cluster = map_image(min_lat, min_lon, max_lat, max_lon, zoom, amenity)
 
-    # TODO: tile fix, else the scatter looks shit
+    # Converting lat-long values in Dataframe to adjust for new scale in the OSM Image
     x_min, y_max = degree_to_number(min_lat, min_lon, zoom)
     x_max, y_min = degree_to_number(max_lat, max_lon, zoom)
     x_tile = []
