@@ -11,13 +11,16 @@ from PIL import Image
 from tqdm import tqdm
 
 # Establishing global vars.
-city_list = ['Vancouver', 'Burnaby', 'Richmond', 'Coquitlam', 'Surrey']
+city_list = ["Vancouver", "Burnaby", "Surrey", "Coquitlam", "Richmond"] # ignoring "Abbotsford" following model data
 zoom = 12
 
 dir = os.getcwd()
 model_path = dir + '/model.pkl'
 training_path = dir + '/../filtered-vancouver-training-5-category.json'
 testing_path = dir + '/../filtered-vancouver-testing.json'
+
+def city_to_num(index):
+    return {"Vancouver": 1, "Burnaby": 2, "Surrey": 3, "Coquitlam": 4, "Richmond": 5}[index]
 
 # the following functions are adapted from: https://stackoverflow.com/a/28530369
 def degree_to_number(lat, lon, zoom):
@@ -29,19 +32,13 @@ def degree_to_number(lat, lon, zoom):
                                 
     return x_tile, y_tile
 
-def number_to_degree(x_tile, y_tile, zoom):
-    n = 2 ** zoom
-    lon = x_tile / n * 360.0 - 180.0
-    r_lat = math.atan(math.sinh(math.pi * (1 - 2 * y_tile / n)))
-    lat = math.degrees(r_lat)
-    return lat, lon
-
-def map_image(lat, lon, max_lat, max_lon, zoom):
+def map_image(lat, lon, max_lat, max_lon, zoom, amenity):
     osm_url = r"http://a.tile.openstreetmap.org/{0}/{1}/{2}.png"
     x_min, y_max = degree_to_number(lat, lon, zoom)
     x_max, y_min = degree_to_number(max_lat, max_lon, zoom)
 
     cluster = Image.new('RGB', ((x_max-x_min+1)*256-1, (y_max-y_min+1)*256-1))
+    print(f'\tGenerating map to show all {amenity} locations...')
     for x_tile in tqdm(range(x_min, x_max+1)):
         for y_tile in range(y_min, y_max+1):
             try:
@@ -52,10 +49,10 @@ def map_image(lat, lon, max_lat, max_lon, zoom):
             except:
                 print("Image download failure, instantiating tile as None")
     
+    print(f'\tMAP GENERATION - COMPLETE.\n')
     return cluster
 
 def main():
-    
     print('\t***\tWELCOME TO PLACEHUNTER!\t***\n')
     # Input & validity
     while True:
@@ -79,10 +76,13 @@ def main():
     # Filtration & Combination
     filter_testing = testing[["lat", "lon"]].copy()
     predict = model.predict(filter_testing)
+    predict_proba = model.predict_proba(filter_testing)[:, city_to_num(city)]
     testing["city"] = predict
+    testing["confidence"] = predict_proba
     testing = testing[testing["city"] == city].reset_index(drop=True)
     
     training = training[training["city"] == city].reset_index(drop=True)
+    training["confidence"] = 0  # since we only want to focus on the model prediction results
     dataset = training.append(testing)
 
     # cross checking using get_close_matches(), cause we're all human
@@ -95,7 +95,7 @@ def main():
         return
         
     amenity = amenity_check[0]
-    print(f'Found place with closest approximation to given name: {amenity}.')
+    print(f'Found place with closest approximation to given name: {amenity}.\n')
     dataset = dataset[dataset['name'] == amenity]
 
     # Setting up lat-lon vars to create image from OSM
@@ -103,22 +103,33 @@ def main():
     max_lat = dataset['lat'].max()
     min_lon = dataset['lon'].min()
     max_lon = dataset['lon'].max()
-    img_cluster = map_image(min_lat, min_lon, max_lat, max_lon, zoom)
+    img_cluster = map_image(min_lat, min_lon, max_lat, max_lon, zoom, amenity)
 
     # TODO: tile fix, else the scatter looks shit
+    x_min, y_max = degree_to_number(min_lat, min_lon, zoom)
+    x_max, y_min = degree_to_number(max_lat, max_lon, zoom)
     x_tile = []
     y_tile = []
     for index, row in dataset.iterrows():
         x, y = degree_to_number(row['lat'], row['lon'], zoom)
+        x = (x - x_min + 1) * 256
+        y = (y - y_min + 1) * 255
         x_tile.append(x)
         y_tile.append(y)
     
     fig = plt.figure()
-    fig.patch.set_facecolor('white')
     plt.imshow(np.asarray(img_cluster))
     plt.scatter(x_tile, y_tile, zorder=1, alpha=0.2, c='b', s=10)
+    plt.axis('off')
+    plt.title(f'Map plot of all {amenity} in the Lower Mainland')
     plt.show()
+
+    dataset = dataset.sort_values(by=['confidence'], ascending=False)
+    print(f'Showing top 5 {amenity} in {city}:\n')
+    print(dataset.head(5))
+    print('\n')
     
+    print('\t***\tTHANK YOU!\t***\n')
     return
 
 if __name__ == '__main__':
