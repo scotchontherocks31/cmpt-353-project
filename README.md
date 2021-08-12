@@ -37,9 +37,9 @@ The order in which the code runs, assuming the directory is in `cmpt-353-project
 
 ### **Filtration**
 Run `filtering.ipynb` to filter "amenities-vancouver.json" to extract information required. This outputs: 
-    `filtered-vancouver-training.json` that can be used for training
-    `filtered-vancouver-testing.json` that can be used for testing
-    `filtered-vancouver-all.json` that can be used for the final search
+ - `filtered-vancouver-training.json` that can be used for training
+ - `filtered-vancouver-testing.json` that can be used for testing
+ - `filtered-vancouver-all.json` that can be used for the final search
 
 Note: To learn about the cities of the data points, simply run:
 ```bash
