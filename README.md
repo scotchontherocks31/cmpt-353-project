@@ -37,11 +37,11 @@ The order in which the code runs, assuming the directory is in `cmpt-353-project
 
 ### **Filtration**
 Run `filtering.ipynb` to filter "amenities-vancouver.json" to extract information required. This outputs: 
- - `filtered-vancouver-training.json` that can be used for training
+ - `filtered-vancouver-training.json` , `filtered-vancouver-training-5-category.json` , `filtered-vancouver-training-amenity-removed.json` that can be used for training
  - `filtered-vancouver-testing.json` that can be used for testing
  - `filtered-vancouver-all.json` that can be used for the final search
 
-Note: To learn about the cities of the data points, simply run:
+Note: Used as an early experiment, we ran the json file agaisnt simple ML model in `learn_city.py` with:
 ```bash
 python3 learn_city.py filtered-vancouver.json
 ```
