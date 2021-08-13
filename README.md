@@ -79,7 +79,7 @@ Showing top 5 McDonald's in Vancouver:
 ```
 
 ***	THANK YOU!	***
-
+Note: Image output for this sample input can be found in `./sample_output/sample_output.png`
 
 
 ## **License**
