@@ -144,12 +144,12 @@ def main():
         x_tile.append(x)
         y_tile.append(y)
     
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10, 8))
     plt.imshow(np.asarray(img_cluster))
     plt.scatter(x_tile, y_tile, zorder=1, alpha=0.8, c='b', s=10)
     plt.axis('off')
     plt.title(f'Map of all {amenity} in Lower Mainland around {city}')
-    plt.savefig(sample_output_path + 'sample_out.png')
+    plt.savefig(sample_output_path + 'sample_out.png', bbox_inches='tight')
     plt.show()
 
     dataset = dataset.sort_values(by=['confidence'], ascending=False)
