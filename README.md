@@ -48,6 +48,8 @@ python3 learn_city.py filtered-vancouver.json
 
 ### **Model building, fine tuning and export**
 Run `model.ipynb`
+ - to output the model used for the application, run the `Imports and data preparation` section and the `final results` section. This outputs `model.pkl` which exports the model to a pickle file.
+ - other sections may be run (i.e. `early results` and `other graphs of interest`) to re-produce the report results.
 
 ### **User Interface**
 To use the application that addresses our problem specified in the report, simply run:
