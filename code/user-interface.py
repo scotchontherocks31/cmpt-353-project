@@ -23,9 +23,9 @@ def city_to_num(index):
     """
         Takes in city name to spit out the index number needed to get desired predict_proba() results
     """
-    return {"Vancouver": 1, "Burnaby": 2, "Surrey": 3, "Coquitlam": 4, "Richmond": 5}[index]
+    return {"Vancouver": 0, "Burnaby": 1, "Surrey": 2, "Coquitlam": 3, "Richmond": 4}[index]
 
-# the following two functions are adapted from: https://stackoverflow.com/a/28530369
+# the following function is adapted from: https://stackoverflow.com/a/28530369
 def degree_to_number(lat, lon, zoom):
     """
         Takes in lat-lon co-ordinates and transforms them into OSM x-y co-ordinates
@@ -38,6 +38,21 @@ def degree_to_number(lat, lon, zoom):
                                 
     return x_tile, y_tile
 
+# the following function is adapted from: https://stackoverflow.com/a/28530369
+# modification of the function above not using int for more accurate lon and lat results 
+def degree_to_number_float(lat, lon, zoom):
+    """
+        Takes in lat-lon co-ordinates and transforms them into OSM x-y co-ordinates
+    """
+    r_lat = math.radians(lat)
+    n = 2 ** zoom
+    x_tile = ((lon + 180.0) / 360.0 * n)
+    y_tile = ((1.0 - math.log(math.tan(r_lat) +
+                                 (1 / math.cos(r_lat))) / math.pi) / 2.0 * n)
+                                
+    return x_tile, y_tile
+
+# the following function is adapted from: https://stackoverflow.com/a/28530369
 def map_image(lat, lon, max_lat, max_lon, zoom, amenity):
     """
         Creates an image cluster out of the given lat-lon co-ordinates and a specified "zoom" value
@@ -122,15 +137,15 @@ def main():
     x_tile = []
     y_tile = []
     for index, row in dataset.iterrows():
-        x, y = degree_to_number(row['lat'], row['lon'], zoom)
-        x = (x - x_min + 1) * 256
-        y = (y - y_min + 1) * 255
+        x, y = degree_to_number_float(row['lat'], row['lon'], zoom)
+        x = (x - x_min) * 256 
+        y = (y - y_min) * 255
         x_tile.append(x)
         y_tile.append(y)
     
     fig = plt.figure()
     plt.imshow(np.asarray(img_cluster))
-    plt.scatter(x_tile, y_tile, zorder=1, alpha=0.2, c='b', s=10)
+    plt.scatter(x_tile, y_tile, zorder=1, alpha=0.8, c='b', s=10)
     plt.axis('off')
     plt.title(f'Map plot of all {amenity} in the Lower Mainland')
     plt.show()
