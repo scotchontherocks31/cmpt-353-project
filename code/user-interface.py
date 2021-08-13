@@ -17,6 +17,7 @@ dir = os.getcwd()
 model_path = dir + '/model.pkl'
 training_path = dir + '/../filtered-vancouver-training-5-category.json'
 testing_path = dir + '/../filtered-vancouver-testing.json'
+sample_output_path = dir + '/../sample_output/'
 
 
 def city_to_num(index):
@@ -147,7 +148,8 @@ def main():
     plt.imshow(np.asarray(img_cluster))
     plt.scatter(x_tile, y_tile, zorder=1, alpha=0.8, c='b', s=10)
     plt.axis('off')
-    plt.title(f'Map plot of all {amenity} in the Lower Mainland')
+    plt.title(f'Map of all {amenity} in Lower Mainland around {city}')
+    plt.savefig(sample_output_path + 'sample_out.png')
     plt.show()
 
     dataset = dataset.sort_values(by=['confidence'], ascending=False)
