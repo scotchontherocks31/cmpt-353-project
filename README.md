@@ -55,5 +55,32 @@ To use the application that addresses our problem specified in the report, simpl
 python3 user_interface.py
 ```
 
+### **Sample Input/Output**
+$ python3 user-interface.py  
+***	WELCOME TO PLACEHUNTER!	***
+
+Enter the city name you're located in: vancouver  
+Enter the name of the place you're looking for: mcdonalds  
+Found place with closest approximation to given name: McDonald's.  
+
+Generating map to show all McDonald's locations...
+100%|████████████████████████████████████████████████████████████████| 11/11 [00:08<00:00,  1.30it/s]
+MAP GENERATION - COMPLETE.
+
+Showing top 5 McDonald's in Vancouver:
+
+```
+            lon        lat    amenity        name       city postcode street  confidence
+689 -123.030512  49.280836  fast_food  McDonald's  Vancouver     None   None    0.340000
+604 -123.101513  49.245151  fast_food  McDonald's  Vancouver     None   None    0.206667
+539 -122.292177  49.036602  fast_food  McDonald's  Vancouver     None   None    0.140000
+367 -123.065729  49.233088  fast_food  McDonald's  Vancouver     None   None    0.126667
+567 -123.036516  49.306677  fast_food  McDonald's  Vancouver     None   None    0.120000
+```
+
+***	THANK YOU!	***
+
+
+
 ## **License**
 [**MIT**](https://choosealicense.com/licenses/mit/)
